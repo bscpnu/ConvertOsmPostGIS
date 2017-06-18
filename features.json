@@ -1,0 +1,846 @@
+# Extract features from osm
+# JSON BEGIN
+[
+#
+# SECTION 1. TARGET RELATIONAL MODEL
+{
+    "public.physiography_water"   : [ "sym1", "sym2", "sym3",
+                                      "name(255)=$key:name"
+                                    ],
+    "public.physiography_life"    : [ "sym1", "sym2", "sym3",
+                                      "name(255)=$key:name"
+                                    ],
+    "public.human_landuse"        : [ "sym1", "sym2", "sym3",
+                                      "name(255)=$key:name"
+                                    ],
+    "public.human_built"          : [ "sym1", "sym2", "sym3",
+                                      "name(255)=$key:name"
+                                    ],
+    
+    "anomaly"                     : [ "class=null",
+                                      "reason char varying=",
+                                      "comment character varying(255)",
+                                      "tags varchar(255)=$key:*"
+                                    ],
+    "public.topology_border"      : { type: bound, name: "border" },
+    "public.topology_coast"       : { type: bound, name: "coast" },
+
+    "public.navigation_aero"      : { type: route, name: "aero" },
+    "public.navigation_motor"     : { type: route, name: "motor" },
+    "public.navigation_foot"      : { type: route, name: "foot" },
+    "public.navigation_nautical"  : { type: route, name: "nautical" },
+},
+#
+# SECTION 2. FEATURE TYPE FILTERS
+[
+#
+# OMITTED TYPES
+#
+# Drop all data that has been specifically labeled not to be rendered.
+#
+    [   {
+        "render"        : "no" ,
+        }, null, [ null, ],
+    ],
+#
+# HIGHWAY
+#
+    [   {
+        "highway"       : "pedestrian" ,
+        "area"          : "yes" ,
+        }, "area", [ "human_built", "plaza", "" ],
+        [ "foot" ]
+    ],
+    [   {
+        "highway"       : "cycleway" ,
+        }, "line", [ "human_built", "road", "cycleway" ],
+#TODO: Not building the cycling routes yet.
+        [ "foot" ]
+    ],
+    [   {
+        "highway"       : "motorway"
+        }, "line", [ "human_built", "road", "motorway" ],
+        [ "motor", ]
+    ],
+    [   {
+        "highway"       : "motorway_link"
+        }, "line", [ "human_built", "road", "motorway", "link" ],
+        [ "motor", ]
+    ],
+    [   {
+        "highway"       : "motorway_junction"
+        }, "line", [ "anomaly", "road", "motorway_junction", "How to handle these?" ],
+    ],
+    [   {
+        "highway"       : "trunk",
+        "motorroad"     : "yes"
+        }, "line", [ "human_built", "road", "trunk", "motorroad" ],
+        [ "motor", ]
+    ],
+    [   {
+        "highway"       : "trunk_link"
+        }, "line", [ "human_built", "road", "trunk", "link" ],
+        [ "motor", ]
+    ],
+    [   {
+        "highway"       : "trunk"
+        }, "line", [ "human_built", "road", "trunk" ],
+        [ "motor", "foot" ]
+    ],
+    [   {
+        "highway"       : "primary"
+        }, "line", [ "human_built", "road", "primary" ],
+        [ "motor", "foot" ]
+    ],
+    [   {
+        "highway"       : "primary_link"
+        }, "line", [ "human_built", "road", "primary", "link" ],
+        [ "motor", "foot" ]
+    ],
+    [   {
+        "highway"       : "secondary"
+        }, "line", [ "human_built", "road", "secondary" ],
+        [ "motor", "foot" ]
+    ],
+    [   {
+        "highway"       : "secondary_link"
+        }, "line", [ "human_built", "road", "secondary", "link" ],
+        [ "motor", "foot" ]
+    ],
+    [   {
+        "highway"       : "tertiary"
+        }, "line", [ "human_built", "road", "tertiary" ],
+        [ "motor", "foot" ]
+    ],
+    [   {
+        "highway"       : "unclassified"
+        }, "line", [ "human_built", "road", "unclassified" ],
+        [ "motor", "foot" ]
+    ],
+    [   {
+        "highway"       : "service"
+        }, "line", [ "human_built", "road", "service", ],
+        [ "motor", "foot" ]
+    ],
+    [   {
+        "highway"       : "road"
+        }, "line", [ "human_built", "road", "?" ],
+        [ "motor", "foot" ]
+    ],
+    [   {
+        "highway"       : "residential"
+        }, "line", [ "human_built", "road", "residential" ],
+        [ "motor", "foot" ]
+    ],
+    [   {
+        "highway"       : "living_street"
+        }, "line", [ "human_built", "road", "residential", "living_street" ],
+        [ "motor", "foot" ]
+    ],
+    [   {
+        "highway"       : [ "track", "unsurfaced" ]
+        }, "line", [ "human_built", "road", "track", ],
+        [ "motor", "foot" ]
+    ],
+    [   {
+        "highway"       : "path",
+        }, "line", [ "human_built", "road", "path", ],
+        [ "foot" ]
+    ],
+    [   {
+        "highway"       : "bridleway",
+        }, "line", [ "human_built", "road", "path", "bridleway" ],
+# TODO: It's also for horses and cycles
+        [ "foot" ]
+    ],
+    [   {
+        "highway"       : "steps",
+        }, "line", [ "human_built", "road", "pedestrian", "steps" ],
+        [ "foot" ]
+    ],
+    [   {
+        "highway"       : [ "pedestrian", "footway" ],
+        "area"          : [ null, "no" ],
+        }, "line", [ "human_built", "road", "pedestrian", ],
+        [ "foot" ]
+    ],
+#
+# JUNCTION
+# Most of these will be recognized as highways already, because the 'junction'
+# tag seems to be used together with the 'highway' tag.
+#
+    [   {
+        "junction"      : "roundabout"
+        }, "line", [ "human_built", "road", "junction", "roundabout" ],
+        [ "public.navigation_motor", "navigation_foot" ]
+    ],
+    [   {
+        "junction"      : "*"
+        }, "line", [ "human_built", "road", "junction" ],
+        [ "motor", "foot" ]
+    ],
+#
+# RAILWAYS
+#
+    [   {
+        "railway"       : "rail" ,
+        }, "line", [ "human_built", "railroad", "rail" ],
+#        [ "rail" ]
+    ],
+    [   {
+        "railway"       : "tram" ,
+        }, "line", [ "human_built", "railroad", "tram" ],
+#        [ "rail" ]
+    ],
+    [   {
+        "railway"       : "light_rail" ,
+        }, "line", [ "human_built", "railroad", "light_rail" ],
+#        [ "rail" ]
+    ],
+    [   {
+        "railway"       : "subway" ,
+        }, "line", [ "human_built", "railroad", "subway" ],
+#        [ "rail" ]
+    ],
+#
+# AEROWAYS
+#
+    [   {
+        "aeroway"       : "apron" ,
+        }, "area", [ "human_built", "aeroway", "apron" ],
+        [ "aero" ]
+    ],
+    [   {
+        "aeroway"       : "helipad" ,
+        }, "area", [ "human_built", "aeroway", "helipad" ],
+        [ "aero" ]
+    ],
+    [   {
+        "aeroway"       : "aerodrome" ,
+        }, "area", [ "human_landuse", "facility", "aerodrome" ]
+    ],
+    [   {
+        "aeroway"       : "terminal" ,
+        }, "area", [ "human_built", "building", "facility", "terminal" ]
+    ],
+    [   {
+        "aeroway"      : [ "runway" ],
+        }, "line", [ "human_built", "aeroway", "runway" ],
+        [ "aero", ]
+    ],
+    [   {
+        "aeroway"      : [ "taxiway" ],
+        }, "line", [ "human_built", "aeroway", "taxiway" ],
+        [ "aero", ]
+    ],
+#
+#   ROUTES
+#
+    [   {
+        "route"        : [ "ferry" ],
+        "motorcar"     : [ "no" ],
+        }, "line", [ null, "waterway", "ferry", ],
+        [ "foot", "nautical" ]
+    ],
+    [   {
+        "route"        : [ "ferry" ],
+        }, "line", [ null, "waterway", "ferry" ],
+        [ "motor", "foot", "nautical" ]
+    ],
+#
+#   NATURAL
+#
+    [   {
+        "natural"       : "water" ,
+        }, "area", [ "physiography_water", "water", "natural", "" ]
+    ],
+    [   {
+        "natural"       : "wood" ,
+        }, "area", [ "physiography_life", "forest", "natural" ]
+    ],
+    [   {
+        "natural"       : "grass" ,
+        }, "area", [ "physiography_life", "grass", "natural" ]
+    ],
+    [   {
+# TODO: Not supporting valleys currently.
+        "natural"       : "valley" ,
+        }, "line", [ null, "valley", "natural" ]
+    ],
+#
+#   LANDUSE
+#
+    [   {
+        "landuse"       : "basin" ,
+        }, "area", [ "physiography_water", "water", "landuse", "basin" ]
+    ],
+    [   {
+        "landuse"       : "forest" ,
+        }, "area", [ "physiography_life", "forest", "landuse" ]
+    ],
+    [   {
+        "landuse"       : "wood" ,
+        }, "area", [ "physiography_life", "forest", "landuse", "wood" ]
+    ],
+    [   {
+        "landuse"       : "orchard" ,
+        }, "area", [ "physiography_life", "forest", "landuse", "orchard" ]
+    ],
+    [   {
+        "landuse"       : "grass" ,
+        }, "area", [ "physiography_life", "grass", "landuse" ]
+    ],
+    [   {
+        "landuse"       : "residential" ,
+        }, "area", [ "human_landuse", "residential", "" ]
+    ],
+    [   {
+        "landuse"       : [ "farm", "farmland" ],
+        }, "area", [ "human_landuse", "agricultural", "farm" ]
+    ],
+    [   {
+        "landuse"       : [ "greenhouse_horticulture", ],
+        }, "area", [ "human_landuse", "agricultural", "greenhouse_horticulture", "" ]
+    ],
+    [   {
+        "landuse"       : [ null, "industrial" ],
+        "man_made"      : "wastewater_plant" ,
+        }, "area", [ "human_built", "building", "industrial", "wastewater_plant" ]
+    ],
+    [   {
+        "landuse"       : "industrial" ,
+        }, "area", [ "human_landuse", "industrial", "" ]
+    ],
+    [   {
+        "landuse"       : "quarry" ,
+        }, "area", [ "human_landuse", "industrial", "quarry" ]
+    ],
+    [   {
+        "landuse"       : "village_green" ,
+        }, "area", [ "human_landuse", "park", "village_green" ],
+        [ "foot" ]
+    ],
+    [   {
+        "landuse"       : "cemetery"
+        }, "area", [ "human_landuse", "facility", "cemetery" ]
+    ],
+    [   {
+        "landuse"      : "reservoir" ,
+        }, "area", [ "physiography_water", "water", "landuse", "reservoir" ]
+    ],
+    [   {
+        "landuse"      : [ "commercial", "retail" ] ,
+        }, "area", [ "human_landuse", "commercial" ]
+    ],
+#
+# MILITARY
+#
+    [   {
+        "military"       : "*" ,
+        "boundary"       : "fence" ,
+        }, "line", [ "human_built", "barrier", "fence", "military" ]
+    ],
+    [   {
+        "military"       : "barracks" ,
+        }, "area", [ "human_built", "building", "military", "barracks" ]
+    ],
+    [   {
+        "landuse"       : [ "military" ] ,
+        "barrier"       : [ "wall" ] ,
+        }, "line", [ "human_built", "barrier", "wall", "military" ]
+    ],
+    [   {
+        "landuse"       : "military" ,
+        }, "area", [ "human_landuse", "military", "" ]
+    ],
+#
+# AMENITY
+#
+    [   {
+        "amenity"       : "place_of_worship"
+        }, "area", [ "human_built", "building", "religious", "place_of_worship" ]
+    ],
+    [   {
+        "amenity"       : "grave_yard" ,
+        "religion"      : "christian"
+        }, "area", [ "human_landuse", "facility", "cemetery", "christian" ]
+    ],
+    [   {
+        "amenity"       : "grave_yard" ,
+        }, "area", [ "human_landuse", "facility", "cemetery", "grave_yard" ]
+    ],
+    [   {
+        "amenity"       : "restaurant" ,
+        "building"      : "yes",
+        }, "area", [ "human_built", "building", "commercial", "restaurant" ]
+    ],
+    [   {
+        "amenity"       : "restaurant" ,
+        "building"      : [ null, "no" ],
+        }, "area", [ "human_landuse", "commercial", "restaurant" ]
+    ],
+    [   {
+        "amenity"       : "studio",
+        "building"      : [ null, "no" ],
+        }, "area", [ "human_landuse", "facility", "studio" ]
+    ],
+    [   {
+        "amenity"       : "prison",
+        "building"      : "yes",
+        }, "area", [ "human_built", "building", "prison" ]
+    ],
+    [   {
+        "amenity"       : "prison",
+        "building"      : [ null, "no" ],
+        }, "area", [ "human_landuse", "facility", "prison" ]
+    ],
+    [   {
+        "amenity"       : "police",
+        "building"      : [ "yes" ],
+        }, "area", [ "human_built", "building", "police" ]
+    ],
+    [   {
+        "amenity"       : "police",
+        "building"      : [ null, "no" ],
+        }, "area", [ "human_landuse", "facility", "police" ]
+    ],
+    [   {
+        "amenity"       : "bus_station",
+        "area"      : [ null, "yes" ],
+        }, "area", [ "human_landuse", "facility", "transportation", "bus_station" ]
+    ],
+    [   {
+        "amenity"       : "parking" ,
+        "parking"       : "multi-storey",
+        }, "area", [ "human_built", "building", "parking", "multi-storey" ]
+    ],
+    [   {
+        "amenity"       : "parking" ,
+        "parking"       : "underground",
+        }, "area", [ "human_built", "parking", "underground" ],
+        [ "motor", "foot" ]
+    ],
+    [   {
+        "amenity"       : "parking" ,
+        "area"          : [ null, "yes" ] ,
+        "parking"       : [ null, "surface" ],
+        }, "area", [ "human_built", "parking", "surface" ],
+        [ "motor", "foot" ]
+    ],
+    [   {
+        "amenity"       : "school" ,
+        "building"      : [ null, "yes" ],
+        }, "area", [ "human_built", "building", "educational", "school" ]
+    ],
+    [   {
+        "amenity"       : "hospital" ,
+        "building"      : "yes",
+        }, "area", [ "human_built", "building", "hospital" ]
+    ],
+    [   {
+        "amenity"       : "hospital" ,
+        }, "area", [ "human_landuse", "facility", "hospital" ]
+    ],
+    [   {
+        "amenity"       : "college" ,
+        }, "area", [ "human_built", "building", "educational", "college" ]
+    ],
+    [   {
+        "amenity"       : "library" ,
+        "building"      : "yes",
+        }, "area", [ "human_built", "building", "educational", "library" ]
+    ],
+    [   {
+        "amenity"       : "library" ,
+        "building"      : [ null, "no" ],
+        }, "area", [ "human_landuse", "facility", "educational", "library" ]
+    ],
+#
+# HISTORIC
+#
+    [   {
+        "historic"      : "castle" ,
+        "building"      : "yes" ,
+        "area"          : [ null, "no" ] ,
+        }, "area", [ "human_built", "building", "historic", "castle" ]
+    ],
+    [   {
+        "historic"      : "castle" ,
+        "building"      : [ null, "no" ],
+        "area"          : "yes" ,
+        }, "area", [ "human_landuse", "historic", "castle" ]
+    ],
+    [   {
+        "historic"      : "archaeological_site" ,
+        "area"          : [ null, "yes" ],
+        }, "area", [ "human_landuse", "historic", "archaeological_site" ]
+    ],
+    [   {
+        "historic"      : "*" ,
+        }, "area", [ "anomaly", "historic=*", "", "What kind of historic?" ]
+    ],
+#
+# BUILDING
+#
+    [   {
+        "building"      : [ "shed" ],
+        }, "area", [ "human_built", "building", "storage", "shed" ]
+    ],
+    [   {
+        "building"      : "yes" ,
+        "shop"          : "supermarket" ,
+        }, "area", [ "human_built", "building", "commercial", "supermarket" ]
+    ],
+#
+# BARRIER
+#
+    [   {
+        "barrier"       : [ "wall", "city_wall" ] ,
+        }, "line", [ "human_built", "barrier", "wall" ]
+    ],
+    [   {
+        "barrier"       : [ "fence" ] ,
+        }, "line", [ "human_built", "barrier", "fence" ]
+    ],
+    [   {
+        "barrier"       : [ "ditch" ] ,
+        }, "line", [ "human_built", "barrier", "ditch" ]
+    ],
+    [   {
+# This corrects a common mistake in the data: barriers marked as boundaries.
+        "boundary"      : [ "wall" ] ,
+        }, "line", [ "human_built", "barrier", "wall" ]
+    ],
+#
+# BOUNDARY  
+#
+# TODO: Other boundaries are dropped at the moment.
+    [   {
+        "boundary"      : [ "*" ] ,
+        }, "line", [ null, "boundary", "" ]
+    ],
+    [   {
+# This corrects a common mistake in the data: boundaries marked as 'bondary'.
+        "bondary"      : [ "*" ] ,
+        }, "line", [ null, "boundary", "" ]
+    ],
+
+#
+# TOURISM
+#
+    [   {
+        "tourism"       : "museum" ,
+        "building"      : "yes",
+        }, "area", [ "human_built", "building", "educational", "museum" ]
+    ],
+    [   {
+        "tourism"       : "museum" ,
+        "building"      : [ null, "no" ],
+        }, "area", [ "human_landuse", "facility", "educational", "museum" ]
+    ],
+    [   {
+        "tourism"       : "hotel" ,
+        "building"      : "yes",
+        }, "area", [ "human_built", "building", "accommodation", "hotel" ]
+    ],
+    [   {
+        "tourism"       : "hotel" ,
+        "building"      : [ null, "no" ],
+        "stars"         : null,
+        }, "area", [ "human_landuse", "commercial", "hotel" ]
+    ],
+#
+# LEISURE
+#
+    [   {
+        "leisure"       : "garden" ,
+        }, "area", [ "physiography_life", "garden", "" ]
+    ],
+    [   {
+        "leisure"       : "common" ,
+        }, "area", [ "human_landuse", "park", "common" ],
+        [ "foot" ]
+    ],
+    [   {
+        "leisure"       : "nature_reserve" ,
+        }, "area", [ "human_landuse", "area", "nature_reserve" ],
+        [ "foot" ]
+    ],
+    [   {
+        "landuse"       : "recreation_ground" ,
+        }, "area", [ "human_landuse", "park", "recreation_ground" ],
+        [ "foot" ]
+    ],
+    [   {
+        "leisure"       : "golf_course" ,
+        }, "area", [ "human_landuse", "park", "golf_course" ]
+    ],
+    [   {
+        "leisure"       : "marina" ,
+        }, "area", [ "human_landuse", "facility", "marina" ]
+    ],
+    [   {
+        "leisure"       : "park" ,
+        }, "area", [ "human_landuse", "park", "leisure" ],
+        [ "foot" ]
+    ],
+    [   {
+        "leisure"       : "water_park" ,
+        }, "area", [ "human_built", "water", "water_park" ]
+    ],
+    [   {
+        "leisure"       : "swimming_pool" ,
+        "sport"         : [ null, "swimming" ],
+        }, "area", [ "human_built", "water", "swimming_pool" ]
+    ],
+    [   {
+        "leisure"       : "playground" ,
+        }, "area", [ "human_landuse", "park", "playground" ]
+    ],
+    [   {
+        "leisure"       : "track" ,
+        "sport"         : [ "motor", ] ,
+        }, "line", [ "human_built", "track", "motor" ],
+        [ "motor", "foot" ]
+    ],
+    [   {
+        "leisure"       : "track" ,
+        "sport"         : [ "horse_racing", ] ,
+        }, "line", [ "human_built", "track", "horse" ],
+    ],
+    [   {
+        "leisure"       : "track" ,
+        "sport"         : [ "athletics", ] ,
+        }, "line", [ "human_built", "track", "athletics" ],
+    ],
+    [   {
+        "leisure"       : "track" ,
+        "sport"         : null ,
+        }, "line", [ "human_built", "track", "" ],
+        [ "foot" ]
+    ],
+    [   {
+        "leisure"       : [ null, "pitch" ] ,
+        "sport"         : [ "soccer", "football" ] ,
+        }, "area", [ "human_built", "playing_field", "football" ]
+    ],
+    [   {
+        "leisure"       : "pitch" ,
+        "sport"         : [ "tennis" ] ,
+        }, "area", [ "human_built", "playing_field", "tennis" ]
+    ],
+    [   {
+        "leisure"       : "pitch" ,
+        "sport"         : [ null, "multi" ]
+        }, "area", [ "human_built", "playing_field", "" ]
+    ],
+    [   {
+        "leisure"       : "sports_centre" ,
+        }, "area", [ "human_built", "building", "venue", "sports_centre" ]
+    ],
+    [   {
+        "leisure"       : "stadium" ,
+        }, "area", [ "human_built", "building", "venue", "stadium" ]
+    ],
+    [   {
+        "leisure"       : [ "autoscooter", "bumper_car" ] ,
+# This should be attraction=bumper_car
+        }, "area", [ "human_built", "attraction", "bumper_car" ]
+    ],
+#
+# SPORT
+# The 'sport' tag shouldn't appear alone, but of course it does.
+#
+    [   {
+        "sport"         : [ "swimming" ],
+        }, "area", [ "human_landuse", "water", "swimming" ]
+    ],
+    [   {
+        "sport"         : [ "paintball" ],
+        }, "area", [ "human_landuse", "playing_field", "paintball" ]
+    ],
+#
+#
+#
+    [   {
+        "man_made"      : "tower" ,
+        }, "area", [ "human_built", "tower", ]
+    ],
+    [   {
+        "building"      : "yes" ,
+        "man_made"      : "storage" ,
+        "storage"       : "oil" ,
+        }, "area", [ "human_built", "building", "storage", "oil" ]
+    ],
+    [   {
+        "man_made"      : "reservoir_covered" ,
+        }, "area", [ "human_built", "building", "reservoir", "covered" ]
+    ],
+    [   {
+        "power"         : "station" ,
+        }, "area", [ "human_built", "building", "industrial", "power=station" ]
+    ],
+    [   {
+        "power"         : "sub_station" ,
+        }, "area", [ "human_built", "building", "industrial", "power=sub_station" ]
+    ],
+    [   {
+        "power"         : "generator" ,
+        "building"      : "yes",
+        }, "area", [ "human_built", "building", "industrial", "power=generator" ]
+    ],
+    [   {
+        "power"         : "generator" ,
+        "building"      : [ null, "no" ],
+        }, "area", [ "human_landuse", "industrial", "power", "generator" ]
+    ],
+    [   {
+        "power"         : "*" ,
+        }, "line", [ "human_built", "industrial", "power=*" ]
+    ],
+    [   {
+        "shop"          : "*" ,
+        }, "area", [ "human_built", "building", "commercial", "shop" ]
+    ],
+    [   {
+        "building"      : "yes" ,
+        }, "area", [ "human_built", "building", "" ]
+    ],
+    [   {
+        "landuse"      : "*" ,
+        }, "area", [ "anomaly", "landuse=*", "", "What kind of land use?" ]
+    ],
+    [   {
+        "man_made"      : "pier" ,
+        }, "line", [ "human_built", "platform", "pier", "" ],
+        [ "foot" ]
+    ],
+    [   {
+        "natural"       : "coastline" ,
+        }, "line", [ "physiography_water", "coastline", "" ],
+        [ "coast" ]
+    ],
+    [   {
+        "tourism"          : "artwork" ,
+        }, "line", [ "human_built", "tourism", "artwork" ]
+    ],
+    [   {
+        "waterway"         : "river" ,
+        }, "line", [ "physiography_water", "waterway", "river" ]
+    ],
+    [   {
+        "waterway"         : "riverbank" ,
+        }, "area", [ "physiography_water", "water", "river" ]
+    ],
+    [   {
+        "waterway"         : "stream" ,
+        }, "line", [ "physiography_water", "waterway", "stream" ]
+    ],
+    [   {
+        "waterway"         : "aqueduct" ,
+        }, "line", [ "physiography_water", "waterway", "aqueduct" ]
+    ],
+    [   {
+        "waterway"         : "canal" ,
+        "tunnel"           : "yes" ,
+        }, "line", [ "physiography_water", "waterway", "canal", "tunnel" ]
+    ],
+    [   {
+        "waterway"         : "canal" ,
+        "tunnel"           : [ null, "no" ],
+        }, "line", [ "physiography_water", "waterway", "canal" ]
+    ],
+    [   {
+        "waterway"         : "dock" ,
+        "area"             : [ null, "yes" ],
+        }, "area", [ "human_built", "water", "dock" ]
+    ],
+    [   {
+        "waterway"         : "boatyard" ,
+        }, "area", [ "human_landuse", "facility", "boatyard" ]
+    ],
+    [   {
+        "waterway"         : "drain" ,
+        "boat"             : [ null, "no" ],
+        }, "line", [ "physiography_water", "waterway", "drain" ]
+    ],
+    [   {
+        "waterway"         : "wadi" ,
+        }, "line", [ "physiography_water", "waterway", "wadi" ]
+    ],
+    [   {
+        "waterway"         : "*" ,
+        }, "line", [ "anomaly", "waterway=*", "", "What kind of a waterway?" ]
+    ],
+    [   {
+        "foot"         : "permissive" ,
+        }, "line", [ "anomaly", "foot=permissive", "", "What are these?" ],
+        [ "foot" ]
+    ],
+# Move these two "fixme" features to the top, if you want to detect them.
+    [   {
+        "FIXME"       : "*"
+        }, "line", [ "anomaly", "fixme", "FIXME=*", "Check what's wrong." ]
+    ],
+    [   {
+        "fixme"       : "*"
+        }, "line", [ "anomaly", "fixme", "fixme=*", "Check what's wrong." ]
+    ],
+#
+# Catch map features that are not known yet. Helps debugging map rendering.
+#
+    [   {
+        "highway"       : "*"
+        }, "line", [ "anomaly", "road", "highway=*", "What kind of a highway?" ],
+        [ "motor", ]
+    ],
+    [   {
+        "man_made"      : "*" ,
+        }, "line", [ "anomaly", "man_made=*", "", "What kind of man-made?" ]
+    ],
+    [   {
+        "amenity"       : "*" ,
+        }, "line", [ "anomaly", "amenity=*", "", "What kind of amenity?" ]
+    ],
+    [   {
+        "leisure"       : "*" ,
+        }, "line", [ "anomaly", "leisure=*", "", "What kind of leisure?" ]
+    ],
+    [   {
+        "attraction"    : [ "*" ] ,
+        }, "line", [ "anomaly", "attraction=*", "", "What kind of attraction?" ]
+    ],
+    [   {
+# We don't care about exact addresses at this time. Just drop the addr:* stuff.
+        "addr:street"           : "*" ,
+        }, "line", [ null, ]
+    ],
+    [   {
+# We don't care about openfootprints data. Drop the ofp:* stuff.
+        "ofp:highway"           : "*" ,
+        }, "line", [ null, ]
+    ],
+# Does it at least have a name?
+    [   {
+        "area"          : "yes" ,
+        "name"          : "*",
+        }, "area", [ "human_landuse", "area", "named" ]
+    ],
+    [   {
+        "area"          : "yes" ,
+        }, "area", [ "human_landuse", "area", "unspecified" ]
+    ],
+    [   {
+        "area"          : [ null, "no" ],
+        "name"          : "*",
+        }, "line", [ "human_landuse", "", "named" ]
+    ],
+# Catch all the rest
+    [   {
+        ""              : null ,
+        }, "line", [ "anomaly", "unspecified", null, "Does this have any tags?" ]
+    ],
+# FEATURE TYPE FILTERS END
+]
+# JSON END
+]
