@@ -1,422 +1,416 @@
-2017-06-18 22:14:41.839 conv.osm.postgis.Main initLogger
+2017-06-18 23:24:12.307 conv.osm.postgis.Main initLogger
 CONFIG: Logging configuration: logging.properties
-2017-06-18 22:14:41.959 conv.osm.postgis.Main main
+2017-06-18 23:24:12.501 conv.osm.postgis.Main main
 CONFIG: Feature specification: features.json
-2017-06-18 22:14:41.982 conv.osm.postgis.core.FeatureRecognizer readModel
+2017-06-18 23:24:12.548 conv.osm.postgis.core.FeatureRecognizer readModel
 INFO: The feature specification defines a target relational model with 11 relations.
-2017-06-18 22:14:41.983 conv.osm.postgis.core.FeatureRecognizer readModel
+2017-06-18 23:24:12.549 conv.osm.postgis.core.FeatureRecognizer readModel
 CONFIG: Topological graph "public.navigation_aero": {"name":"aero","type":"route"}
-2017-06-18 22:14:41.988 conv.osm.postgis.core.FeatureRecognizer readFeature
+2017-06-18 23:24:12.553 conv.osm.postgis.core.FeatureRecognizer readFeature
 CONFIG: Feature layer "public.anomaly" attributes: ["class=null","reason char varying=","comment character varying(255)","tags varchar(255)=$key:*"]
-2017-06-18 22:14:41.993 conv.osm.postgis.core.FeatureRecognizer readModel
+2017-06-18 23:24:12.561 conv.osm.postgis.core.FeatureRecognizer readModel
 CONFIG: Topological graph "public.navigation_foot": {"name":"foot","type":"route"}
-2017-06-18 22:14:41.994 conv.osm.postgis.core.FeatureRecognizer readFeature
+2017-06-18 23:24:12.562 conv.osm.postgis.core.FeatureRecognizer readFeature
 CONFIG: Feature layer "public.human_landuse" attributes: ["sym1","sym2","sym3","name(255)=$key:name"]
-2017-06-18 22:14:41.994 conv.osm.postgis.core.FeatureRecognizer readModel
+2017-06-18 23:24:12.562 conv.osm.postgis.core.FeatureRecognizer readModel
 CONFIG: Topological graph "public.navigation_motor": {"name":"motor","type":"route"}
-2017-06-18 22:14:41.994 conv.osm.postgis.core.FeatureRecognizer readFeature
+2017-06-18 23:24:12.563 conv.osm.postgis.core.FeatureRecognizer readFeature
 CONFIG: Feature layer "public.physiography_life" attributes: ["sym1","sym2","sym3","name(255)=$key:name"]
-2017-06-18 22:14:41.995 conv.osm.postgis.core.FeatureRecognizer readModel
+2017-06-18 23:24:12.563 conv.osm.postgis.core.FeatureRecognizer readModel
 CONFIG: Topological graph "public.topology_border": {"name":"border","type":"bound"}
-2017-06-18 22:14:41.997 conv.osm.postgis.core.FeatureRecognizer readFeature
+2017-06-18 23:24:12.565 conv.osm.postgis.core.FeatureRecognizer readFeature
 CONFIG: Feature layer "public.physiography_water" attributes: ["sym1","sym2","sym3","name(255)=$key:name"]
-2017-06-18 22:14:41.998 conv.osm.postgis.core.FeatureRecognizer readFeature
+2017-06-18 23:24:12.565 conv.osm.postgis.core.FeatureRecognizer readFeature
 CONFIG: Feature layer "public.human_built" attributes: ["sym1","sym2","sym3","name(255)=$key:name"]
-2017-06-18 22:14:41.998 conv.osm.postgis.core.FeatureRecognizer readModel
+2017-06-18 23:24:12.566 conv.osm.postgis.core.FeatureRecognizer readModel
 CONFIG: Topological graph "public.topology_coast": {"name":"coast","type":"bound"}
-2017-06-18 22:14:41.998 conv.osm.postgis.core.FeatureRecognizer readModel
+2017-06-18 23:24:12.566 conv.osm.postgis.core.FeatureRecognizer readModel
 CONFIG: Topological graph "public.navigation_nautical": {"name":"nautical","type":"route"}
-2017-06-18 22:14:41.999 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.567 conv.osm.postgis.core.FeatureRecognizer readFilters
 INFO: The feature specification declares 158 feature types.
-2017-06-18 22:14:41.999 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.567 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 1: [{"render":"no"},null,[null]]
-2017-06-18 22:14:42.000 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.569 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 2: [{"area":"yes","highway":"pedestrian"},"area",["human_built","plaza",""],["foot"]]
-2017-06-18 22:14:42.001 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.570 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 3: [{"highway":"cycleway"},"line",["human_built","road","cycleway"],["foot"]]
-2017-06-18 22:14:42.001 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.570 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 4: [{"highway":"motorway"},"line",["human_built","road","motorway"],["motor"]]
-2017-06-18 22:14:42.002 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.571 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 5: [{"highway":"motorway_link"},"line",["human_built","road","motorway","link"],["motor"]]
-2017-06-18 22:14:42.002 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.571 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 6: [{"highway":"motorway_junction"},"line",["anomaly","road","motorway_junction","How to handle these?"]]
-2017-06-18 22:14:42.003 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.572 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 7: [{"motorroad":"yes","highway":"trunk"},"line",["human_built","road","trunk","motorroad"],["motor"]]
-2017-06-18 22:14:42.004 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.572 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 8: [{"highway":"trunk_link"},"line",["human_built","road","trunk","link"],["motor"]]
-2017-06-18 22:14:42.004 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.573 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 9: [{"highway":"trunk"},"line",["human_built","road","trunk"],["motor","foot"]]
-2017-06-18 22:14:42.004 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.574 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 10: [{"highway":"primary"},"line",["human_built","road","primary"],["motor","foot"]]
-2017-06-18 22:14:42.005 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.574 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 11: [{"highway":"primary_link"},"line",["human_built","road","primary","link"],["motor","foot"]]
-2017-06-18 22:14:42.009 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.575 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 12: [{"highway":"secondary"},"line",["human_built","road","secondary"],["motor","foot"]]
-2017-06-18 22:14:42.010 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.575 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 13: [{"highway":"secondary_link"},"line",["human_built","road","secondary","link"],["motor","foot"]]
-2017-06-18 22:14:42.011 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.576 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 14: [{"highway":"tertiary"},"line",["human_built","road","tertiary"],["motor","foot"]]
-2017-06-18 22:14:42.011 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.577 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 15: [{"highway":"unclassified"},"line",["human_built","road","unclassified"],["motor","foot"]]
-2017-06-18 22:14:42.012 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.578 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 16: [{"highway":"service"},"line",["human_built","road","service"],["motor","foot"]]
-2017-06-18 22:14:42.012 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.579 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 17: [{"highway":"road"},"line",["human_built","road","?"],["motor","foot"]]
-2017-06-18 22:14:42.013 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.579 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 18: [{"highway":"residential"},"line",["human_built","road","residential"],["motor","foot"]]
-2017-06-18 22:14:42.014 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.580 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 19: [{"highway":"living_street"},"line",["human_built","road","residential","living_street"],["motor","foot"]]
-2017-06-18 22:14:42.014 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.581 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 20: [{"highway":["track","unsurfaced"]},"line",["human_built","road","track"],["motor","foot"]]
-2017-06-18 22:14:42.015 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.582 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 21: [{"highway":"path"},"line",["human_built","road","path"],["foot"]]
-2017-06-18 22:14:42.015 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.582 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 22: [{"highway":"bridleway"},"line",["human_built","road","path","bridleway"],["foot"]]
-2017-06-18 22:14:42.016 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.586 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 23: [{"highway":"steps"},"line",["human_built","road","pedestrian","steps"],["foot"]]
-2017-06-18 22:14:42.016 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.588 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 24: [{"area":[null,"no"],"highway":["pedestrian","footway"]},"line",["human_built","road","pedestrian"],["foot"]]
-2017-06-18 22:14:42.017 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.589 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 25: [{"junction":"roundabout"},"line",["human_built","road","junction","roundabout"],["public.navigation_motor","navigation_foot"]]
-2017-06-18 22:14:42.018 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.590 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 26: [{"junction":"*"},"line",["human_built","road","junction"],["motor","foot"]]
-2017-06-18 22:14:42.019 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.591 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 27: [{"railway":"rail"},"line",["human_built","railroad","rail"]]
-2017-06-18 22:14:42.020 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.591 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 28: [{"railway":"tram"},"line",["human_built","railroad","tram"]]
-2017-06-18 22:14:42.021 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.592 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 29: [{"railway":"light_rail"},"line",["human_built","railroad","light_rail"]]
-2017-06-18 22:14:42.022 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.593 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 30: [{"railway":"subway"},"line",["human_built","railroad","subway"]]
-2017-06-18 22:14:42.022 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.594 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 31: [{"aeroway":"apron"},"area",["human_built","aeroway","apron"],["aero"]]
-2017-06-18 22:14:42.023 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.595 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 32: [{"aeroway":"helipad"},"area",["human_built","aeroway","helipad"],["aero"]]
-2017-06-18 22:14:42.024 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.596 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 33: [{"aeroway":"aerodrome"},"area",["human_landuse","facility","aerodrome"]]
-2017-06-18 22:14:42.025 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.597 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 34: [{"aeroway":"terminal"},"area",["human_built","building","facility","terminal"]]
-2017-06-18 22:14:42.026 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.598 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 35: [{"aeroway":["runway"]},"line",["human_built","aeroway","runway"],["aero"]]
-2017-06-18 22:14:42.027 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.598 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 36: [{"aeroway":["taxiway"]},"line",["human_built","aeroway","taxiway"],["aero"]]
-2017-06-18 22:14:42.028 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.599 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 37: [{"route":["ferry"],"motorcar":["no"]},"line",[null,"waterway","ferry"],["foot","nautical"]]
-2017-06-18 22:14:42.029 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.600 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 38: [{"route":["ferry"]},"line",[null,"waterway","ferry"],["motor","foot","nautical"]]
-2017-06-18 22:14:42.029 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.600 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 39: [{"natural":"water"},"area",["physiography_water","water","natural",""]]
-2017-06-18 22:14:42.031 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.603 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 40: [{"natural":"wood"},"area",["physiography_life","forest","natural"]]
-2017-06-18 22:14:42.032 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.603 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 41: [{"natural":"grass"},"area",["physiography_life","grass","natural"]]
-2017-06-18 22:14:42.032 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.605 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 42: [{"natural":"valley"},"line",[null,"valley","natural"]]
-2017-06-18 22:14:42.033 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.606 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 43: [{"landuse":"basin"},"area",["physiography_water","water","landuse","basin"]]
-2017-06-18 22:14:42.033 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.606 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 44: [{"landuse":"forest"},"area",["physiography_life","forest","landuse"]]
-2017-06-18 22:14:42.034 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.607 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 45: [{"landuse":"wood"},"area",["physiography_life","forest","landuse","wood"]]
-2017-06-18 22:14:42.034 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.607 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 46: [{"landuse":"orchard"},"area",["physiography_life","forest","landuse","orchard"]]
-2017-06-18 22:14:42.035 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.608 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 47: [{"landuse":"grass"},"area",["physiography_life","grass","landuse"]]
-2017-06-18 22:14:42.036 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.608 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 48: [{"landuse":"residential"},"area",["human_landuse","residential",""]]
-2017-06-18 22:14:42.037 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.609 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 49: [{"landuse":["farm","farmland"]},"area",["human_landuse","agricultural","farm"]]
-2017-06-18 22:14:42.037 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.610 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 50: [{"landuse":["greenhouse_horticulture"]},"area",["human_landuse","agricultural","greenhouse_horticulture",""]]
-2017-06-18 22:14:42.038 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.610 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 51: [{"man_made":"wastewater_plant","landuse":[null,"industrial"]},"area",["human_built","building","industrial","wastewater_plant"]]
-2017-06-18 22:14:42.038 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.611 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 52: [{"landuse":"industrial"},"area",["human_landuse","industrial",""]]
-2017-06-18 22:14:42.039 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.612 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 53: [{"landuse":"quarry"},"area",["human_landuse","industrial","quarry"]]
-2017-06-18 22:14:42.039 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.612 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 54: [{"landuse":"village_green"},"area",["human_landuse","park","village_green"],["foot"]]
-2017-06-18 22:14:42.040 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.613 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 55: [{"landuse":"cemetery"},"area",["human_landuse","facility","cemetery"]]
-2017-06-18 22:14:42.040 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.613 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 56: [{"landuse":"reservoir"},"area",["physiography_water","water","landuse","reservoir"]]
-2017-06-18 22:14:42.041 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.614 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 57: [{"landuse":["commercial","retail"]},"area",["human_landuse","commercial"]]
-2017-06-18 22:14:42.042 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.615 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 58: [{"boundary":"fence","military":"*"},"line",["human_built","barrier","fence","military"]]
-2017-06-18 22:14:42.042 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.615 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 59: [{"military":"barracks"},"area",["human_built","building","military","barracks"]]
-2017-06-18 22:14:42.043 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.617 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 60: [{"barrier":["wall"],"landuse":["military"]},"line",["human_built","barrier","wall","military"]]
-2017-06-18 22:14:42.044 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.617 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 61: [{"landuse":"military"},"area",["human_landuse","military",""]]
-2017-06-18 22:14:42.046 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.617 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 62: [{"amenity":"place_of_worship"},"area",["human_built","building","religious","place_of_worship"]]
-2017-06-18 22:14:42.047 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.618 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 63: [{"amenity":"grave_yard","religion":"christian"},"area",["human_landuse","facility","cemetery","christian"]]
-2017-06-18 22:14:42.048 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.620 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 64: [{"amenity":"grave_yard"},"area",["human_landuse","facility","cemetery","grave_yard"]]
-2017-06-18 22:14:42.049 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.621 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 65: [{"amenity":"restaurant","building":"yes"},"area",["human_built","building","commercial","restaurant"]]
-2017-06-18 22:14:42.049 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.622 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 66: [{"amenity":"restaurant","building":[null,"no"]},"area",["human_landuse","commercial","restaurant"]]
-2017-06-18 22:14:42.050 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.623 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 67: [{"amenity":"studio","building":[null,"no"]},"area",["human_landuse","facility","studio"]]
-2017-06-18 22:14:42.051 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.623 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 68: [{"amenity":"prison","building":"yes"},"area",["human_built","building","prison"]]
-2017-06-18 22:14:42.052 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.624 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 69: [{"amenity":"prison","building":[null,"no"]},"area",["human_landuse","facility","prison"]]
-2017-06-18 22:14:42.052 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.624 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 70: [{"amenity":"police","building":["yes"]},"area",["human_built","building","police"]]
-2017-06-18 22:14:42.053 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.625 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 71: [{"amenity":"police","building":[null,"no"]},"area",["human_landuse","facility","police"]]
-2017-06-18 22:14:42.053 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.626 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 72: [{"area":[null,"yes"],"amenity":"bus_station"},"area",["human_landuse","facility","transportation","bus_station"]]
-2017-06-18 22:14:42.054 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.627 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 73: [{"parking":"multi-storey","amenity":"parking"},"area",["human_built","building","parking","multi-storey"]]
-2017-06-18 22:14:42.054 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.628 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 74: [{"parking":"underground","amenity":"parking"},"area",["human_built","parking","underground"],["motor","foot"]]
-2017-06-18 22:14:42.055 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.628 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 75: [{"area":[null,"yes"],"parking":[null,"surface"],"amenity":"parking"},"area",["human_built","parking","surface"],["motor","foot"]]
-2017-06-18 22:14:42.055 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.628 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 76: [{"amenity":"school","building":[null,"yes"]},"area",["human_built","building","educational","school"]]
-2017-06-18 22:14:42.056 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.630 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 77: [{"amenity":"hospital","building":"yes"},"area",["human_built","building","hospital"]]
-2017-06-18 22:14:42.056 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.630 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 78: [{"amenity":"hospital"},"area",["human_landuse","facility","hospital"]]
-2017-06-18 22:14:42.057 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.631 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 79: [{"amenity":"college"},"area",["human_built","building","educational","college"]]
-2017-06-18 22:14:42.057 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.631 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 80: [{"amenity":"library","building":"yes"},"area",["human_built","building","educational","library"]]
-2017-06-18 22:14:42.058 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.632 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 81: [{"amenity":"library","building":[null,"no"]},"area",["human_landuse","facility","educational","library"]]
-2017-06-18 22:14:42.058 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.633 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 82: [{"area":[null,"no"],"historic":"castle","building":"yes"},"area",["human_built","building","historic","castle"]]
-2017-06-18 22:14:42.059 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.634 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 83: [{"area":"yes","historic":"castle","building":[null,"no"]},"area",["human_landuse","historic","castle"]]
-2017-06-18 22:14:42.060 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.634 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 84: [{"area":[null,"yes"],"historic":"archaeological_site"},"area",["human_landuse","historic","archaeological_site"]]
-2017-06-18 22:14:42.060 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.635 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 85: [{"historic":"*"},"area",["anomaly","historic=*","","What kind of historic?"]]
-2017-06-18 22:14:42.061 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.636 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 86: [{"building":["shed"]},"area",["human_built","building","storage","shed"]]
-2017-06-18 22:14:42.061 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.636 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 87: [{"shop":"supermarket","building":"yes"},"area",["human_built","building","commercial","supermarket"]]
-2017-06-18 22:14:42.062 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.637 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 88: [{"barrier":["wall","city_wall"]},"line",["human_built","barrier","wall"]]
-2017-06-18 22:14:42.062 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.640 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 89: [{"barrier":["fence"]},"line",["human_built","barrier","fence"]]
-2017-06-18 22:14:42.063 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.641 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 90: [{"barrier":["ditch"]},"line",["human_built","barrier","ditch"]]
-2017-06-18 22:14:42.063 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.642 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 91: [{"boundary":["wall"]},"line",["human_built","barrier","wall"]]
-2017-06-18 22:14:42.064 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.643 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 92: [{"boundary":["*"]},"line",[null,"boundary",""]]
-2017-06-18 22:14:42.064 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.643 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 93: [{"bondary":["*"]},"line",[null,"boundary",""]]
-2017-06-18 22:14:42.065 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.644 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 94: [{"tourism":"museum","building":"yes"},"area",["human_built","building","educational","museum"]]
-2017-06-18 22:14:42.065 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.645 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 95: [{"tourism":"museum","building":[null,"no"]},"area",["human_landuse","facility","educational","museum"]]
-2017-06-18 22:14:42.066 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.646 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 96: [{"tourism":"hotel","building":"yes"},"area",["human_built","building","accommodation","hotel"]]
-2017-06-18 22:14:42.067 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.647 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 97: [{"tourism":"hotel","stars":null,"building":[null,"no"]},"area",["human_landuse","commercial","hotel"]]
-2017-06-18 22:14:42.067 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.648 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 98: [{"leisure":"garden"},"area",["physiography_life","garden",""]]
-2017-06-18 22:14:42.068 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.648 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 99: [{"leisure":"common"},"area",["human_landuse","park","common"],["foot"]]
-2017-06-18 22:14:42.068 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.649 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 100: [{"leisure":"nature_reserve"},"area",["human_landuse","area","nature_reserve"],["foot"]]
-2017-06-18 22:14:42.069 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.650 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 101: [{"landuse":"recreation_ground"},"area",["human_landuse","park","recreation_ground"],["foot"]]
-2017-06-18 22:14:42.070 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.650 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 102: [{"leisure":"golf_course"},"area",["human_landuse","park","golf_course"]]
-2017-06-18 22:14:42.070 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.651 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 103: [{"leisure":"marina"},"area",["human_landuse","facility","marina"]]
-2017-06-18 22:14:42.071 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.652 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 104: [{"leisure":"park"},"area",["human_landuse","park","leisure"],["foot"]]
-2017-06-18 22:14:42.072 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.653 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 105: [{"leisure":"water_park"},"area",["human_built","water","water_park"]]
-2017-06-18 22:14:42.073 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.655 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 106: [{"leisure":"swimming_pool","sport":[null,"swimming"]},"area",["human_built","water","swimming_pool"]]
-2017-06-18 22:14:42.076 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.656 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 107: [{"leisure":"playground"},"area",["human_landuse","park","playground"]]
-2017-06-18 22:14:42.078 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.657 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 108: [{"leisure":"track","sport":["motor"]},"line",["human_built","track","motor"],["motor","foot"]]
-2017-06-18 22:14:42.079 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.658 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 109: [{"leisure":"track","sport":["horse_racing"]},"line",["human_built","track","horse"]]
-2017-06-18 22:14:42.080 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.659 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 110: [{"leisure":"track","sport":["athletics"]},"line",["human_built","track","athletics"]]
-2017-06-18 22:14:42.081 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.660 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 111: [{"leisure":"track","sport":null},"line",["human_built","track",""],["foot"]]
-2017-06-18 22:14:42.081 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.667 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 112: [{"leisure":[null,"pitch"],"sport":["soccer","football"]},"area",["human_built","playing_field","football"]]
-2017-06-18 22:14:42.082 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.668 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 113: [{"leisure":"pitch","sport":["tennis"]},"area",["human_built","playing_field","tennis"]]
-2017-06-18 22:14:42.083 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.669 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 114: [{"leisure":"pitch","sport":[null,"multi"]},"area",["human_built","playing_field",""]]
-2017-06-18 22:14:42.083 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.669 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 115: [{"leisure":"sports_centre"},"area",["human_built","building","venue","sports_centre"]]
-2017-06-18 22:14:42.084 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.670 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 116: [{"leisure":"stadium"},"area",["human_built","building","venue","stadium"]]
-2017-06-18 22:14:42.084 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.671 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 117: [{"leisure":["autoscooter","bumper_car"]},"area",["human_built","attraction","bumper_car"]]
-2017-06-18 22:14:42.085 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.672 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 118: [{"sport":["swimming"]},"area",["human_landuse","water","swimming"]]
-2017-06-18 22:14:42.085 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.673 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 119: [{"sport":["paintball"]},"area",["human_landuse","playing_field","paintball"]]
-2017-06-18 22:14:42.086 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.673 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 120: [{"man_made":"tower"},"area",["human_built","tower"]]
-2017-06-18 22:14:42.086 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.674 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 121: [{"man_made":"storage","storage":"oil","building":"yes"},"area",["human_built","building","storage","oil"]]
-2017-06-18 22:14:42.087 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.675 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 122: [{"man_made":"reservoir_covered"},"area",["human_built","building","reservoir","covered"]]
-2017-06-18 22:14:42.087 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.675 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 123: [{"power":"station"},"area",["human_built","building","industrial","power=station"]]
-2017-06-18 22:14:42.092 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.677 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 124: [{"power":"sub_station"},"area",["human_built","building","industrial","power=sub_station"]]
-2017-06-18 22:14:42.093 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.678 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 125: [{"power":"generator","building":"yes"},"area",["human_built","building","industrial","power=generator"]]
-2017-06-18 22:14:42.095 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.678 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 126: [{"power":"generator","building":[null,"no"]},"area",["human_landuse","industrial","power","generator"]]
-2017-06-18 22:14:42.096 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.679 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 127: [{"power":"*"},"line",["human_built","industrial","power=*"]]
-2017-06-18 22:14:42.096 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.680 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 128: [{"shop":"*"},"area",["human_built","building","commercial","shop"]]
-2017-06-18 22:14:42.097 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.680 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 129: [{"building":"yes"},"area",["human_built","building",""]]
-2017-06-18 22:14:42.097 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.681 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 130: [{"landuse":"*"},"area",["anomaly","landuse=*","","What kind of land use?"]]
-2017-06-18 22:14:42.098 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.681 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 131: [{"man_made":"pier"},"line",["human_built","platform","pier",""],["foot"]]
-2017-06-18 22:14:42.100 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.682 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 132: [{"natural":"coastline"},"line",["physiography_water","coastline",""],["coast"]]
-2017-06-18 22:14:42.101 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.682 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 133: [{"tourism":"artwork"},"line",["human_built","tourism","artwork"]]
-2017-06-18 22:14:42.102 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.683 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 134: [{"waterway":"river"},"line",["physiography_water","waterway","river"]]
-2017-06-18 22:14:42.102 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.683 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 135: [{"waterway":"riverbank"},"area",["physiography_water","water","river"]]
-2017-06-18 22:14:42.102 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.685 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 136: [{"waterway":"stream"},"line",["physiography_water","waterway","stream"]]
-2017-06-18 22:14:42.103 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.685 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 137: [{"waterway":"aqueduct"},"line",["physiography_water","waterway","aqueduct"]]
-2017-06-18 22:14:42.103 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.686 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 138: [{"waterway":"canal","tunnel":"yes"},"line",["physiography_water","waterway","canal","tunnel"]]
-2017-06-18 22:14:42.104 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.686 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 139: [{"waterway":"canal","tunnel":[null,"no"]},"line",["physiography_water","waterway","canal"]]
-2017-06-18 22:14:42.104 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.687 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 140: [{"area":[null,"yes"],"waterway":"dock"},"area",["human_built","water","dock"]]
-2017-06-18 22:14:42.104 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.687 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 141: [{"waterway":"boatyard"},"area",["human_landuse","facility","boatyard"]]
-2017-06-18 22:14:42.111 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.688 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 142: [{"waterway":"drain","boat":[null,"no"]},"line",["physiography_water","waterway","drain"]]
-2017-06-18 22:14:42.111 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.689 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 143: [{"waterway":"wadi"},"line",["physiography_water","waterway","wadi"]]
-2017-06-18 22:14:42.112 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.689 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 144: [{"waterway":"*"},"line",["anomaly","waterway=*","","What kind of a waterway?"]]
-2017-06-18 22:14:42.112 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.690 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 145: [{"foot":"permissive"},"line",["anomaly","foot=permissive","","What are these?"],["foot"]]
-2017-06-18 22:14:42.113 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.690 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 146: [{"FIXME":"*"},"line",["anomaly","fixme","FIXME=*","Check what's wrong."]]
-2017-06-18 22:14:42.113 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.691 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 147: [{"fixme":"*"},"line",["anomaly","fixme","fixme=*","Check what's wrong."]]
-2017-06-18 22:14:42.113 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.691 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 148: [{"highway":"*"},"line",["anomaly","road","highway=*","What kind of a highway?"],["motor"]]
-2017-06-18 22:14:42.113 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.692 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 149: [{"man_made":"*"},"line",["anomaly","man_made=*","","What kind of man-made?"]]
-2017-06-18 22:14:42.113 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.692 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 150: [{"amenity":"*"},"line",["anomaly","amenity=*","","What kind of amenity?"]]
-2017-06-18 22:14:42.113 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.693 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 151: [{"leisure":"*"},"line",["anomaly","leisure=*","","What kind of leisure?"]]
-2017-06-18 22:14:42.113 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.693 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 152: [{"attraction":["*"]},"line",["anomaly","attraction=*","","What kind of attraction?"]]
-2017-06-18 22:14:42.117 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.697 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 153: [{"addr:street":"*"},"line",[null]]
-2017-06-18 22:14:42.118 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.698 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 154: [{"ofp:highway":"*"},"line",[null]]
-2017-06-18 22:14:42.118 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.699 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 155: [{"area":"yes","name":"*"},"area",["human_landuse","area","named"]]
-2017-06-18 22:14:42.119 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.700 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 156: [{"area":"yes"},"area",["human_landuse","area","unspecified"]]
-2017-06-18 22:14:42.119 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.701 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 157: [{"area":[null,"no"],"name":"*"},"line",["human_landuse","","named"]]
-2017-06-18 22:14:42.120 conv.osm.postgis.core.FeatureRecognizer readFilters
+2017-06-18 23:24:12.701 conv.osm.postgis.core.FeatureRecognizer readFilters
 CONFIG: FeatureType 158: [{"":null},"line",["anomaly","unspecified",null,"Does this have any tags?"]]
-2017-06-18 22:14:42.122 conv.osm.postgis.Main main
+2017-06-18 23:24:12.705 conv.osm.postgis.Main main
 CONFIG: Processing: changesets,nodes,ways,relations,features,topology
-2017-06-18 22:14:42.123 conv.osm.postgis.Main main
+2017-06-18 23:24:12.705 conv.osm.postgis.Main main
 CONFIG: Starting at line: 0
-2017-06-18 22:14:42.124 conv.osm.postgis.Main main
+2017-06-18 23:24:12.712 conv.osm.postgis.Main main
 CONFIG: Database: localhost:5432/db3
-2017-06-18 22:14:42.124 conv.osm.postgis.Main main
+2017-06-18 23:24:12.713 conv.osm.postgis.Main main
 CONFIG: User name: postgres
-2017-06-18 22:14:42.125 conv.osm.postgis.dao.OutputTarget setPostGISURL
+2017-06-18 23:24:12.713 conv.osm.postgis.dao.OutputTarget setPostGISURL
 CONFIG: host=localhost, port=5432, database=db3, schema=public
-2017-06-18 22:14:42.234 conv.osm.postgis.dao.OutputTarget open
+2017-06-18 23:24:12.859 conv.osm.postgis.dao.OutputTarget open
 INFO: Database driver: class org.postgresql.jdbc3g.Jdbc3gConnection
-2017-06-18 22:14:42.275 conv.osm.postgis.dao.FeatureDAO createModel
+2017-06-18 23:24:12.911 conv.osm.postgis.dao.FeatureDAO createModel
 INFO: Target relation "public.anomaly" exists.
-2017-06-18 22:14:42.290 conv.osm.postgis.dao.FeatureDAO createModel
+2017-06-18 23:24:12.937 conv.osm.postgis.dao.FeatureDAO createModel
 FINE: All the required attributes for target relation "public.anomaly" exist.
-2017-06-18 22:14:42.291 conv.osm.postgis.dao.FeatureDAO createModel
+2017-06-18 23:24:12.939 conv.osm.postgis.dao.FeatureDAO createModel
 INFO: Target relation "public.human_built" exists.
-2017-06-18 22:14:42.301 conv.osm.postgis.dao.FeatureDAO createModel
+2017-06-18 23:24:12.952 conv.osm.postgis.dao.FeatureDAO createModel
 FINE: All the required attributes for target relation "public.human_built" exist.
-2017-06-18 22:14:42.303 conv.osm.postgis.dao.FeatureDAO createModel
+2017-06-18 23:24:12.953 conv.osm.postgis.dao.FeatureDAO createModel
 INFO: Target relation "public.human_landuse" exists.
-2017-06-18 22:14:42.314 conv.osm.postgis.dao.FeatureDAO createModel
+2017-06-18 23:24:12.966 conv.osm.postgis.dao.FeatureDAO createModel
 FINE: All the required attributes for target relation "public.human_landuse" exist.
-2017-06-18 22:14:42.337 conv.osm.postgis.dao.FeatureDAO createModel
+2017-06-18 23:24:12.982 conv.osm.postgis.dao.FeatureDAO createModel
 INFO: Target relation "public.physiography_life" exists.
-2017-06-18 22:14:42.346 conv.osm.postgis.dao.FeatureDAO createModel
+2017-06-18 23:24:12.997 conv.osm.postgis.dao.FeatureDAO createModel
 FINE: All the required attributes for target relation "public.physiography_life" exist.
-2017-06-18 22:14:42.347 conv.osm.postgis.dao.FeatureDAO createModel
+2017-06-18 23:24:12.999 conv.osm.postgis.dao.FeatureDAO createModel
 INFO: Target relation "public.physiography_water" exists.
-2017-06-18 22:14:42.358 conv.osm.postgis.dao.FeatureDAO createModel
+2017-06-18 23:24:13.015 conv.osm.postgis.dao.FeatureDAO createModel
 FINE: All the required attributes for target relation "public.physiography_water" exist.
-2017-06-18 22:14:42.365 conv.osm.postgis.core.OSMParser parse
+2017-06-18 23:24:13.018 conv.osm.postgis.core.OSMParser parse
 INFO: Parsing started.
-2017-06-18 22:14:42.365 conv.osm.postgis.core.PostGISWriter run
+2017-06-18 23:24:13.018 conv.osm.postgis.core.PostGISWriter run
 FINE: Writing started
-2017-06-18 22:14:42.368 conv.osm.postgis.core.Monitor run
-INFO: Time elapsed 17335 d 13:14:42.
-2017-06-18 22:14:42.369 conv.osm.postgis.core.Monitor run
+2017-06-18 23:24:13.027 conv.osm.postgis.core.Monitor run
+INFO: Time elapsed 17335 d 14:24:13.
+2017-06-18 23:24:13.027 conv.osm.postgis.core.Monitor run
 INFO: Cumulative: nothing.
-2017-06-18 22:14:42.369 conv.osm.postgis.dao.OutputTarget keepAlive
+2017-06-18 23:24:13.028 conv.osm.postgis.dao.OutputTarget keepAlive
 FINE: The database connection is alive.
-2017-06-18 22:14:42.370 conv.osm.postgis.core.Monitor run
+2017-06-18 23:24:13.029 conv.osm.postgis.core.Monitor run
 CONFIG: JVM 473.0/491.0 MiB (3.7 % used).
-2017-06-18 22:14:57.371 conv.osm.postgis.core.Monitor run
-INFO: Time elapsed 0 d 00:00:15; Committed up to line 76800; Throughput/s 5118.0 lines = 3544.4 entities.
-2017-06-18 22:14:57.372 conv.osm.postgis.core.Monitor run
-INFO: Cumulative: public.osm_nodes:verified=52687 public.osm_ways:verified=501
-2017-06-18 22:14:57.372 conv.osm.postgis.core.Monitor run
-CONFIG: JVM 510.8/619.5 MiB (17.6 % used); In-memory queue 1838.
-2017-06-18 22:15:00.085 conv.osm.postgis.core.OSMParser parse
+2017-06-18 23:24:25.723 conv.osm.postgis.core.OSMParser parse
 INFO: Parsing ended.
-2017-06-18 22:15:00.433 conv.osm.postgis.core.PostGISBuilder generate
+2017-06-18 23:24:26.600 conv.osm.postgis.core.PostGISBuilder generate
 INFO: Generating PostGIS geometry layers and routing topology.
-2017-06-18 22:15:00.436 conv.osm.postgis.core.PostGISBuilder generate
+2017-06-18 23:24:26.604 conv.osm.postgis.core.PostGISBuilder generate
 SEVERE: Generation failed: Did not find any unprocessed OSM ways.
-2017-06-18 22:15:00.436 conv.osm.postgis.core.PostGISBuilder generate
+2017-06-18 23:24:26.605 conv.osm.postgis.core.PostGISBuilder generate
 INFO: Done generating PostGIS geometry layers and routing topology.
-2017-06-18 22:15:00.436 conv.osm.postgis.core.PostGISBuilder processBounds
+2017-06-18 23:24:26.605 conv.osm.postgis.core.PostGISBuilder processBounds
 WARNING: RESULT: Processing bounds. incorrect results, and you may run out of memory with large data sets.
-2017-06-18 22:15:00.436 conv.osm.postgis.core.PostGISBuilder processBounds
+2017-06-18 23:24:26.605 conv.osm.postgis.core.PostGISBuilder processBounds
 INFO: Processing bounds for public.topology_border.
-2017-06-18 22:15:00.438 conv.osm.postgis.core.PostGISBuilder processBounds
+2017-06-18 23:24:26.608 conv.osm.postgis.core.PostGISBuilder processBounds
 FINE: Loaded 0 segments in memory.
-2017-06-18 22:15:00.438 conv.osm.postgis.core.PostGISBuilder processBounds
+2017-06-18 23:24:26.608 conv.osm.postgis.core.PostGISBuilder processBounds
 INFO: Processing bounds for public.topology_coast.
-2017-06-18 22:15:00.438 conv.osm.postgis.core.PostGISBuilder processBounds
+2017-06-18 23:24:26.609 conv.osm.postgis.core.PostGISBuilder processBounds
 FINE: Loaded 0 segments in memory.
-2017-06-18 22:15:00.438 conv.osm.postgis.core.PostGISBuilder processBounds
+2017-06-18 23:24:26.610 conv.osm.postgis.core.PostGISBuilder processBounds
 INFO: Done processing bounds.
-2017-06-18 22:15:00.438 conv.osm.postgis.dao.OutputTarget logStats
+2017-06-18 23:24:26.610 conv.osm.postgis.dao.OutputTarget logStats
 INFO: Database rows inserted or updated total: 0
-2017-06-18 22:15:00.439 conv.osm.postgis.core.PostGISWriter run
+2017-06-18 23:24:26.610 conv.osm.postgis.core.PostGISWriter run
 FINE: Writing ended
-2017-06-18 22:15:00.439 conv.osm.postgis.core.PostGISWriter run
-INFO: Wrote 62252 entities in 0 d 00:00:18 (3444.3/s on average).
+2017-06-18 23:24:26.610 conv.osm.postgis.core.PostGISWriter run
+INFO: Wrote 62252 entities in 0 d 00:00:14 (4580.0/s on average).
