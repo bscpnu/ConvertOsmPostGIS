@@ -1,5 +1,6 @@
 # Part 1. ConvertOsmPostGIS
-### Imam Mustafa Kamal (201683609) & 
+#### Program Assigment SDB Class, Pusan National University 2017
+#### By Imam Mustafa Kamal (201683609) & Boubenna hadjer (201593278)
 
 compile- and run-time dependencies :
 - PostgreSQL
@@ -20,3 +21,5 @@ other requirements (we provided it root directory):
 4. Outputs
    Open your PostGIS database it will generates a lot of table as follows
    ![tabel](https://user-images.githubusercontent.com/29518994/27262069-2ffb3f0a-548a-11e7-8071-24d7ee371fa2.png)
+
+to be continued in https://github.com/bscpnu/OpenLayersFromPostGIS for displaying data from PostGIS to website
