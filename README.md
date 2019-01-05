@@ -1,6 +1,6 @@
 # Part 1. ConvertOsmPostGIS
 #### Program Assigment SDB Class, Pusan National University 2017
-#### By Imam Mustafa Kamal (201683609) & Boubenna hadjer (201593278)
+#### By Imam Mustafa Kamal (201683609)
 
 compile- and run-time dependencies :
 - PostgreSQL
